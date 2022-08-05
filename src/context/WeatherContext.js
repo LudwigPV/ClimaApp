@@ -2,19 +2,29 @@ import React from "react";
 const WeatherContext = React.createContext();
 
 const WeatherProvider = ({ children }) => {
-  const [lenguage, setLenguage] = React.useState(navigator.languages[2]);
+  // Busca el idioma del navegador y lo guarda en el estado lenguage
+  const [lenguage, setLenguage] = React.useState(
+    navigator.languages[2] === 'es' ? 'es': 'en'
+  );
   const [weather, setWeather] = React.useState({});
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
   const [location, setLocation] = React.useState({
     lat: 33.44,
     lng: -94.04,
-  });
+  }); 
+  
   const [units, setUnits] = React.useState("metric");
 
   React.useEffect(() => {
     fetch (`${process.env.REACT_APP_API}onecall?lat=${location.lat}&lon=${location.lng}&exclude=minutely&appid=${process.env.REACT_APP_APIKEY}&units=${units}&lang=${lenguage}`)
-    .then(response => response.json())
+    .then((response) => {
+    if (!response.ok) {
+      console.log(response.status)}
+    else {
+      return response.json()
+    }
+  })
     .then(data => {
         setWeather({
             hours: data.hourly,
@@ -40,6 +50,12 @@ const WeatherProvider = ({ children }) => {
         });
         setLoading(false);
     })
+    .catch(error => {
+        setError(error);
+        setLoading(false);
+        console.log(error);
+    });
+
   }, [lenguage, units, location]);
 
   return (

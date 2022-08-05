@@ -11,7 +11,8 @@ export const CurrentWeather = () => {
       weather,
       loading,
       setLocation,
-      lenguage
+      lenguage,
+      error,
   } = useContext(WeatherContext);
   const { otherWords } = useContext(DictionaryContext);
 
@@ -30,6 +31,8 @@ export const CurrentWeather = () => {
   }
   if (loading) {
     return <div>Cargando...</div>;
+  } else if (error) {
+    return <div>{error}</div>;
   } else {
     return (
       <main>
