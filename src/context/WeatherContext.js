@@ -10,8 +10,6 @@ const WeatherProvider = ({ children }) => {
     lat: 33.44,
     lng: -94.04,
   });
-  const weekDays = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado'];
-  const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
   const [units, setUnits] = React.useState("metric");
 
   React.useEffect(() => {
@@ -50,8 +48,6 @@ const WeatherProvider = ({ children }) => {
       setWeather, 
       loading, 
       setLoading,
-      weekDays,
-      months,
       error,
       setError,
       units,

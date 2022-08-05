@@ -1,9 +1,11 @@
 import { useContext } from 'react';
 import { WeatherContext } from '../../context/WeatherContext';
+import { DictionaryContext } from '../../context/DictionaryContext';
 import style from './DaysWeather.module.css';
 
 export const DaysWeather = () => {
-    const { weather, weekDays} = useContext(WeatherContext);
+    const { weekDays } = useContext(DictionaryContext);
+    const { weather , lenguage  } = useContext(WeatherContext);
     const week = weather.week;
     const weekDaysList = week.map((day) => new Date(day.dt*1000));
     const weekTempMax = week.map((day) => Math.floor(day.temp.max));
@@ -17,7 +19,7 @@ export const DaysWeather = () => {
                     <li className={style.day_weather} key={day.getDate()}>
                         <p>
                             <span className={style.iconWeek} style={{backgroundImage: `url(https://openweathermap.org/img/wn/${week[index].weather[0].icon}@2x.png)`}}></span>
-                            {weekDays[day.getDay()]}        
+                            {weekDays[lenguage][day.getDay()]}        
                             <span> {day.getDate()}</span>
                         </p>
                         <p><span>{weekTempMin[index]}</span>° / <span>{weekTempMax[index]}</span>°</p>	

@@ -8,16 +8,16 @@ import { Mapa } from './components/Mapa/Mapa';
 function App() {
 
   return (
-    <WeatherProvider>
-      <DictionaryProvider>
+    <DictionaryProvider> 
+      <WeatherProvider>
         <div className="App">
           <Header />
           <CurrentWeather />
           <Mapa />
           <p>Datos consultados de <span >https://api.openweathermap.org</span> </p>
         </div>
-      </DictionaryProvider>
-    </WeatherProvider>
+      </WeatherProvider>  
+    </DictionaryProvider>
   );
 }
 

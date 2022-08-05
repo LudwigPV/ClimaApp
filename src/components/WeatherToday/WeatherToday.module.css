@@ -16,13 +16,11 @@ form {
 }
 
 .temperature {
-    margin-top: 10px;
     font-size: 5rem;
 }
 
 .temperature_caption {
     font-size: 1.5rem;
-    margin-top: 10px;
 }
 
 .weatherTodayContainer {
