@@ -14,7 +14,6 @@ function App() {
           <Header />
           <CurrentWeather />
           <Mapa />
-          <p>Datos consultados de <span >https://api.openweathermap.org</span> </p>
         </div>
       </WeatherProvider>  
     </DictionaryProvider>

@@ -49,6 +49,17 @@ const DictionaryProvider = ({ children }) => {
         en: 'Wind Speed'
       },
   }
+
+  const otherWords = {
+    locationBtn: {
+      es: 'Usar mi ubicación',
+      en: 'Use my location'
+    },
+    footer_message: {
+      es: 'Datos obtenidos de',
+      en: 'Data obtained from',
+    },
+  }
   return (
     <DictionaryContext.Provider value={{ 
       dictionary, 
@@ -57,7 +68,8 @@ const DictionaryProvider = ({ children }) => {
       unitsOBJ,
       weekDays,
       months,
-      weatherStatsLang
+      weatherStatsLang,
+      otherWords
     }}>
       {children}
     </DictionaryContext.Provider>
