@@ -1,0 +1,37 @@
+.hour_weather {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0 auto;   
+    overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    max-width: 400px;
+}
+
+.hour_card {
+    display: inline-block;
+    width: 80px;
+    margin: 0 1.3rem;
+}
+
+.temperature {
+    font-size: 1.5rem;
+    margin-block-start: 0;
+    margin-top: -16px;
+    margin-bottom: 8px;
+}
+
+.icon_hour_card {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-position: center;
+    margin-block-start: -16px;
+}
+.wind_footer {
+    font-size: 0.8rem;
+    margin-block-start: -4px;
+    inline-size: max-content;
+}

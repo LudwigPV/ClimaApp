@@ -1,24 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import { CurrentWeather } from './components/CurrentWeather/CurrentWeather';
+import { Header } from './components/Header/Header';
+import { WeatherProvider } from './context/WeatherContext';
+import { DictionaryProvider } from './context/DictionaryContext';
+import { Mapa } from './components/Mapa/Mapa';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <WeatherProvider>
+      <DictionaryProvider>
+        <div className="App">
+          <Header />
+          <CurrentWeather />
+          <Mapa />
+          <p>Datos consultados de <span >https://api.openweathermap.org</span> </p>
+        </div>
+      </DictionaryProvider>
+    </WeatherProvider>
   );
 }
 
