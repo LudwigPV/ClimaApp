@@ -14,7 +14,7 @@ const WeatherProvider = ({ children }) => {
     lng: -94.04,
   }); 
   
-  const [units, setUnits] = React.useState("metric");
+  const [units, setUnits] = React.useState("Metric");
 
   React.useEffect(() => {
     fetch (`${process.env.REACT_APP_API}onecall?lat=${location.lat}&lon=${location.lng}&exclude=minutely&appid=${process.env.REACT_APP_APIKEY}&units=${units}&lang=${lenguage}`)
@@ -32,6 +32,7 @@ const WeatherProvider = ({ children }) => {
             location: data.timezone,
             date: data.current.dt,
             id_img: data.current.weather[0].icon,
+            id_weather: data.current.weather[0].id,
             temp: data.current.temp,
             temp_Feel: data.current.feels_like,
             temp_Max: data.daily[0].temp.max,
@@ -55,7 +56,6 @@ const WeatherProvider = ({ children }) => {
         setLoading(false);
         console.log(error);
     });
-
   }, [lenguage, units, location]);
 
   return (

@@ -1,5 +1,6 @@
 import {useState, useMemo, useRef, useCallback, useContext} from 'react'
 import {WeatherContext} from '../../context/WeatherContext'
+import {DictionaryContext} from '../../context/DictionaryContext'
 import {Marker, Popup} from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet';
@@ -12,7 +13,8 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 export function DraggableMarker() {
-    const {location, setLocation} = useContext(WeatherContext);
+    const {location, setLocation, lenguage} = useContext(WeatherContext);
+    const {otherWords} = useContext(DictionaryContext);
     const [draggable, setDraggable] = useState(false)
     const markerRef = useRef(null)
     const eventHandlers = useMemo(
@@ -40,8 +42,8 @@ export function DraggableMarker() {
         <Popup minWidth={90}>
           <span onClick={toggleDraggable}>
             {draggable
-              ? 'Marker is draggable, click to disable'
-              : 'Click here to make marker draggable'}
+              ? otherWords.marker_map_draggeable[lenguage]
+              : otherWords.marker_map_draggeable_disabled[lenguage]}
           </span>
         </Popup>
       </Marker>

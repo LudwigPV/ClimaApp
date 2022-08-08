@@ -9,10 +9,8 @@ import style from './CurrentWeather.module.css';
 export const CurrentWeather = () => {
   const { 
       weather,
-      loading,
       setLocation,
       lenguage,
-      error,
   } = useContext(WeatherContext);
   const { otherWords } = useContext(DictionaryContext);
 
@@ -29,11 +27,6 @@ export const CurrentWeather = () => {
       alert('Geolocation is not supported by this browser.');
     }
   }
-  if (loading) {
-    return <div>Cargando...</div>;
-  } else if (error) {
-    return <div>{error}</div>;
-  } else {
     return (
       <main>
         <section>
@@ -45,5 +38,5 @@ export const CurrentWeather = () => {
         </section>
       </main>
     )
-  }
+  
 }

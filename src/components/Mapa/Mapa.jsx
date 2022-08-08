@@ -4,15 +4,12 @@ import { DraggableMarker } from '../DraggeableMarker/DraggeableMarker'
 import { WeatherContext } from '../../context/WeatherContext'
 import { DictionaryContext } from '../../context/DictionaryContext'
 import 'leaflet/dist/leaflet.css'
-import style  from './Mapa.module.css'
+import style from './Mapa.module.css'
 
 export const Mapa = () => {
     const { otherWords } = useContext(DictionaryContext);
-    const { location, loading, lenguage } = useContext(WeatherContext)
+    const { location, lenguage } = useContext(WeatherContext) 
 
-    if  (loading) {
-        return <div>Cargando...</div>
-    } else {
     return (
         <>
             <MapContainer center={[location.lat, location.lng]} zoom={13} scrollWheelZoom={false} className={style.container_map}>
@@ -22,7 +19,7 @@ export const Mapa = () => {
                 />
                 <DraggableMarker />
             </MapContainer>
-            <p>{otherWords.footer_message[lenguage]} <span >https://api.openweathermap.org</span> </p>
+            <p className={style.footer}>{otherWords.footer_message[lenguage]} <span >https://api.openweathermap.org</span> </p>
         </>
     )
-}}
+}

@@ -5,7 +5,7 @@ import style from "./Header.module.css"
 
 export const Header = () => {
     const { unitsOBJ , lenguageOBJ } = useContext(DictionaryContext);
-    const { setUnits, loading , setLenguage } = useContext(WeatherContext);
+    const { setUnits, setLenguage } = useContext(WeatherContext);
 
     const handleSelectedUnits = (event) => {
         setUnits(event.target.value);
@@ -14,9 +14,6 @@ export const Header = () => {
     const handleSelectedLenguage = (event) => {
         setLenguage(event.target.value);
     }
-    if (loading) {
-        return <div>Loading...</div>
-    } else {
     return (
         <header className={style.header}>
             <form action="">
@@ -30,5 +27,5 @@ export const Header = () => {
             </form>
         </header>
     )
-    }
+    
 }    

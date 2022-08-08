@@ -17,6 +17,10 @@ form {
 
 .temperature {
     font-size: 5rem;
+    position: relative;
+}
+.temp_Unit {
+    font-size: 1.5rem;
 }
 
 .temperature_caption {
