@@ -1,7 +1,7 @@
-import {useState, useMemo, useRef, useCallback, useContext} from 'react'
+import {useState, useMemo, useRef, useCallback, useContext, Children} from 'react'
 import {WeatherContext} from '../../context/WeatherContext'
 import {DictionaryContext} from '../../context/DictionaryContext'
-import {Marker, Popup} from 'react-leaflet'
+import {Marker, Popup, useMapEvents} from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet';
 
@@ -12,21 +12,20 @@ let DefaultIcon = L.icon({
 
 L.Marker.prototype.options.icon = DefaultIcon;
 
-export function DraggableMarker() {
+export function DraggableMarker({children}) {
     const {location, setLocation, lenguage} = useContext(WeatherContext);
     const {otherWords} = useContext(DictionaryContext);
-    const [draggable, setDraggable] = useState(false)
-    const markerRef = useRef(null)
+    const [draggable, setDraggable] = useState(false);
+    const markerRef = useRef(null);
+    const map = useMapEvents({click() {map.flyTo(location)}})
     const eventHandlers = useMemo(
       () => ({
         dragend() {
           const marker = markerRef.current
-          if (marker != null) {
-            setLocation(marker.getLatLng())
-          }
+          if (marker != null) setLocation(marker.getLatLng());
+          // map.flyTo(marker.getLatLng(), 13);
         },
-      }),
-      [],
+      }), [setLocation]
     )
     const toggleDraggable = useCallback(() => {
       setDraggable((d) => !d)
@@ -38,7 +37,9 @@ export function DraggableMarker() {
         eventHandlers={eventHandlers}
         position={location}
         ref={markerRef}
+        value={{map}}
         >
+        {children}
         <Popup minWidth={90}>
           <span onClick={toggleDraggable}>
             {draggable
