@@ -4,7 +4,6 @@ import { DaysWeather } from '../DaysWeather/DaysWeather';
 import { HoursWeather } from '../HoursWeather/HoursWeather';
 import { WeatherToday } from '../WeatherToday/WeatherToday';
 import { DictionaryContext } from '../../context/DictionaryContext';
-import { DraggableMarker } from '../DraggeableMarker/DraggeableMarker';
 import style from './CurrentWeather.module.css';
 
 export const CurrentWeather = () => {
@@ -14,12 +13,11 @@ export const CurrentWeather = () => {
       lenguage,
   } = useContext(WeatherContext);
   const { otherWords } = useContext(DictionaryContext);
-  const { map } = DraggableMarker;
 
   const getCoordinatesNav = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => 
-        setLocation({lat: position.coords.latitude, lng: position.coords.longitude}) + map.flyTo([position.coords.latitude, position.coords.longitude], 13) ,
+        setLocation({lat: position.coords.latitude, lng: position.coords.longitude}) ,
         (error) => (console.log(error) + alert('Error getting location: ' + error.message)), 
         {enableHighAccuracy: true, // Alta precisión
         maximumAge: 0, // No queremos caché

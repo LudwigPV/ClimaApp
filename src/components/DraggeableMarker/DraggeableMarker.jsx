@@ -12,18 +12,17 @@ let DefaultIcon = L.icon({
 
 L.Marker.prototype.options.icon = DefaultIcon;
 
-export function DraggableMarker({children}) {
+export function DraggableMarker() {
     const {location, setLocation, lenguage} = useContext(WeatherContext);
     const {otherWords} = useContext(DictionaryContext);
     const [draggable, setDraggable] = useState(false);
     const markerRef = useRef(null);
-    const map = useMapEvents({click() {map.flyTo(location)}})
+    const map = useMapEvents({click() {map.flyTo(location,  13)}})
     const eventHandlers = useMemo(
       () => ({
         dragend() {
           const marker = markerRef.current
           if (marker != null) setLocation(marker.getLatLng());
-          // map.flyTo(marker.getLatLng(), 13);
         },
       }), [setLocation]
     )
@@ -37,9 +36,7 @@ export function DraggableMarker({children}) {
         eventHandlers={eventHandlers}
         position={location}
         ref={markerRef}
-        value={{map}}
         >
-        {children}
         <Popup minWidth={90}>
           <span onClick={toggleDraggable}>
             {draggable
