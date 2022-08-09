@@ -18,7 +18,7 @@ export const CurrentWeather = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => 
         setLocation({lat: position.coords.latitude, lng: position.coords.longitude}),
-        (error) => console.log(error) && alert('Error getting location'), 
+        (error) => (console.log(error) + alert('Error getting location: ' + error.message)), 
         {enableHighAccuracy: true, // Alta precisión
         maximumAge: 0, // No queremos caché
         timeout: 5000} // Esperar solo 5 segundos

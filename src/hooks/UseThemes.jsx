@@ -77,6 +77,7 @@ export const UseThemes = (weatherCondition, currentTime, location) => {
         },
         Night: {
             backgroundImage: 'url(https://cdn.pixabay.com/photo/2016/11/25/23/15/moon-1859616_960_720.jpg)',
+
         },
         Morning: {
             backgroundImage: 'url(https://cdn.pixabay.com/photo/2018/10/12/21/09/grass-3743023_960_720.jpg)',

@@ -19,7 +19,7 @@ export const Mapa = () => {
                 />
                 <DraggableMarker />
             </MapContainer>
-            <p className={style.footer}>{otherWords.footer_message[lenguage]} <span >https://api.openweathermap.org</span> </p>
+            <p className={style.footer} >{otherWords.footer_message[lenguage]} <a className={style.linkAPI} href="https://api.openweathermap.org">https://api.openweathermap.org</a> </p>
         </>
     )
 }

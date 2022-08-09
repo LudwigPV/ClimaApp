@@ -9,3 +9,9 @@
 .footer {
     margin-block-end: 0;
 }
+
+.linkAPI {
+    color: inherit;
+    text-decoration: none;
+    font-weight: bold;
+}
