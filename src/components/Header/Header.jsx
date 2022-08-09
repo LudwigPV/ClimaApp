@@ -14,15 +14,20 @@ export const Header = () => {
     const handleSelectedLenguage = (event) => {
         setLenguage(event.target.value);
     }
+
     return (
         <header className={style.header}>
             <form action="">
                 <label htmlFor="units" />
                 <select className={style.selectInput} name='units' id="units" onChange={() => handleSelectedUnits(window.event)}>
-                {Object.keys(unitsOBJ).map((key) => <option value={unitsOBJ.key} key={key}>{key}</option>)}
+                    {Object.keys(unitsOBJ).map((key) => 
+                        <option value={unitsOBJ.key} key={key}>{key}</option>
+                    )}
                 </select>
                 <select className={style.selectInput} name="lenguage" id="lenguage" onChange={() => handleSelectedLenguage(window.event)} >
-                {Object.keys(lenguageOBJ).map((key) => <option value={lenguageOBJ[key]} key={key}>{key}</option>)}
+                    {Object.keys(lenguageOBJ).map((key) => 
+                        <option value={lenguageOBJ[key]} key={key}>{key}</option>
+                    )}
                 </select>
             </form>
         </header>

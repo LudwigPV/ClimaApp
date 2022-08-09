@@ -13,11 +13,13 @@ form {
 .date {
     font-size: 1.5rem;
     font-weight: bold;
+    text-shadow: 1px 1px #000;
 }
 
 .temperature {
     font-size: 5rem;
     position: relative;
+    text-shadow: 1px 1px #000;
 }
 .temp_Unit {
     font-size: 1.5rem;
@@ -25,6 +27,7 @@ form {
 
 .temperature_caption {
     font-size: 1.5rem;
+    text-shadow: 1px 1px #000;
 }
 
 .weatherTodayContainer {

@@ -5,6 +5,7 @@ import { WeatherContext } from '../context/WeatherContext';
 import { useContext, useRef } from 'react';
 import { UseThemes } from '../hooks/UseThemes';
 import style from './AppUI.module.css';
+import { Loading } from '../components/Loading/Loading';
 
 export const AppUI = () => {
     const { 
@@ -21,7 +22,7 @@ export const AppUI = () => {
     
 
     if (loading) {
-        return <div >Loading...</div>
+        return <Loading />
     } else if (error) {
         return <div>{error}</div>;
     } else {
